@@ -1,0 +1,102 @@
+$gray1-color: #cbcbcb;
+$gray2-color: #e0e0e0;
+
+$dark-gray1-color: #2d3e50;
+
+$green1-color: #18d8a9;
+
+$white-color: #fff;
+$black-color: #000;
+
+.title {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+$border-style: 1px solid #cbcbcb;
+
+body {
+  font-size: 16px;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+// Table
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: $border-style;
+  td,
+  th {
+    border-left: $border-style;
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: 0.5rem 1rem;
+  }
+  thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+  }
+}
+
+.header {
+  background: $dark-gray1-color;
+  padding: 1rem;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.brand {
+  color: $white-color;
+  text-decoration: none;
+}
+
+.menu {
+  float: right;
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__link {
+    padding: 1rem;
+    color: $green1-color;
+    text-decoration: none;
+  }
+}
+
+.content {
+  margin-top: 4rem;
+}
+
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  background-color: $gray2-color;
+  color: $dark-gray1-color;
+  border: none;
+}
