@@ -1,17 +1,25 @@
-import { RECEIVE_PAGES } from './types'
+import { LOAD_PAGES_REQUEST, LOAD_PAGES_SUCCESS, LOAD_PAGES_FAILURE } from './types'
 import { PAGES_ENDPOINT } from '../constants/endpoints'
 import fetch from 'isomorphic-fetch'
 
-const receivePages = (pages) => ({
-    type: RECEIVE_PAGES,
-    payload: pages
-})
-
-const loadPages = (pages) => (
-    fetch(PAGES_ENDPOINT)
-    .then((response) => response.json())
-    .then((pages) => receivePages(pages))
-)
+const loadPages = () => {
+    return (dispatch) => {
+        dispatch({
+            type: LOAD_PAGES_REQUEST
+        })
+        fetch(PAGES_ENDPOINT)
+        .then((response) => response.json())
+        .then(
+            (pages) => dispatch({
+                type: LOAD_PAGES_SUCCESS,
+                payload: pages
+            }),
+            (error) => dispatch({
+                type: LOAD_PAGES_FAILURE
+            })
+        )
+    }
+}
 
 export {
     loadPages
