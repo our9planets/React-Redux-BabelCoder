@@ -4,7 +4,7 @@ const initialState = []
 const pagesReducer = (state = initialState, action) => {
   switch (action.type){
     case RECEIVE_PAGES: {
-      return state + 1
+      return action.payload
     }
     default: {
       return state

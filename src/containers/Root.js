@@ -7,7 +7,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={configureStore()} key='provider'>
-        {routes()}
+        {routes}
       </Provider>
     )
   }

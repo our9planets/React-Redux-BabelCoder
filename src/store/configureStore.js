@@ -1,21 +1,18 @@
 import { createStore } from 'redux'
 import rootReducer from '../reducers'
 
+const promise = (store) => {
+  const next = store.dispatch
+  return (action) => {
+    if(typeof action.then === 'function')
+      return action.then(next)
+    return next(action)
+  }
+}
+
 export default () => {
-    const initialState = {
-        pages:[
-            {
-                "id": 1,
-                "title": "test page#1",
-                "content": "TEST PAGE CONTENT"
-            }, {
-                "id": 2,
-                "title": "test page#2",
-                "content": "TEST PAGE CONTENT"
-            }
-        ]
-    }
     const store = createStore(rootReducer)
+    store.dispatch = promise(store)
     if (module.hot) {
         module.hot.accept('../reducers', () => {
             const nextRootReducer = require('../reducers').default
