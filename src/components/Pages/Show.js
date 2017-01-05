@@ -21,8 +21,4 @@ ShowPage.defaultProps = {
     page:{}
 }
 
-ShowPage.propTypes = {
-    page: PropTypes.object.isRequired,
-}
-
 export default ShowPage

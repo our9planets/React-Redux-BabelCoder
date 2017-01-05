@@ -27,7 +27,19 @@ const createPage = (values) => ({
         },
         method: 'POST',
         body: JSON.stringify(values),
-        types: [CREATE_PAGE_REQUEST, CREATE_PAGE_SUCCESS, CREATE_PAGE_FAILURE]
+        types: [
+            CREATE_PAGE_REQUEST, 
+            {
+                type: CREATE_PAGE_SUCCESS,
+                payload: (_action, _state, res) => {
+                    return res.json().then((page) => {
+                        dispatch(push(`/pages/${page.id}`))
+                        return page
+                    })
+                }
+            },
+            CREATE_PAGE_FAILURE
+        ]
     }
 })
 

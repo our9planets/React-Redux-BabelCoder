@@ -1,4 +1,5 @@
 import React, {PropTypes, Component } from 'react'
+import { Link } from 'react-router'
 import Page from './Page'
 
   
@@ -13,6 +14,7 @@ class Pages extends Component {
         return (
             <div>
                 <button className='button' onClick={() => this._onReloadPages()}>Reload Pages</button>
+                <Link to={{ pathname: '/pages/new' }}>Create New Page</Link>
                 <hr />            
                 <table className='table'>
                     <thead>

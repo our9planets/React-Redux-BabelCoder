@@ -1,5 +1,6 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 import { 
     Pages, 
     ShowPage, 
@@ -10,8 +11,8 @@ import {
     Home,
 } from '../components'
 
-const routes = (
-    <Router history={browserHistory}>
+const routes = (store, history) => (
+    <Router history={syncHistoryWithStore(history, store)}>
         <Route path='/' component={App}>
             <IndexRoute component={Home} />
             <Route path='pages'>
