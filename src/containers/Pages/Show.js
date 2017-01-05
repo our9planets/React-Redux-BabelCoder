@@ -1,29 +1,14 @@
-import React, { Component } from 'react'
-import { PAGES_ENDPOINT } from '../../constants/endpoints'
+import { connect } from 'react-redux'
 import { ShowPage } from '../../components'
+import { loadPage } from '../../actions/page'
+import { getPageById } from '../../reducers/page'
 
-class ShowPageContainer extends Component {
-    state = {
-        page: {
-            title: '',
-            content: ''
-        }
-    }
+const mapStateToProps = (state, ownProps) => ({
+    page: state.page
+})
 
-    shouldComponentUpdate(_nextProps, nextState) {
-        return this.state.page !== nextState.page;
-    }
+const mapDispatchToProps = (dispatch) => ({
+    loadPage: (id) => dispatch(loadPage(id))
+})
 
-    componentDidMount() {
-        fetch(`${PAGES_ENDPOINT}/${this.props.params.id}`)
-            .then((response) => response.json())
-            .then((page) => this.setState({ page }))
-    }
-
-    render() {
-        const { id, title, content } = this.state.page
-        return (<ShowPage id={id} title={title} content={content} />
-        )
-    }
-}
-export default ShowPageContainer
+export default connect(mapStateToProps, mapDispatchToProps)(ShowPage)

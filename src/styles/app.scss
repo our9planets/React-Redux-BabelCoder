@@ -8,6 +8,8 @@ $green1-color: #18d8a9;
 $white-color: #fff;
 $black-color: #000;
 
+$red1-color: #da4453;
+
 .title {
   position: fixed;
   top: 50%;
@@ -99,4 +101,24 @@ body {
   background-color: $gray2-color;
   color: $dark-gray1-color;
   border: none;
+}
+
+.form {
+  fieldset {
+    margin: 0;
+    padding: 0.35rem 0 0.75rem;
+    border: 0;
+  }
+
+  input[type='text'],
+  textarea,
+  label {
+    display: block;
+    margin: 0.25rem 0;
+    width: 100%;
+  }
+
+  .error {
+    color: $red1-color;
+  }
 }

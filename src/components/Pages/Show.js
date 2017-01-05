@@ -1,19 +1,28 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 
-const ShowPage = ({title, content}) => {
-    return (
-        <article>
-            <h1>{title}</h1>
-            <p>
-            {content}
-            </p>
-        </article>
-    )
+class ShowPage extends Component {
+    componentDidMount() {
+        const { loadPage, params: { id } } = this.props
+        loadPage(id)
+    }
+
+    render() {
+        const { title, content } = this.props.page
+        return (
+            <article>
+              <h1>{title}</h1>
+              <p>{content}</p>
+            </article>
+        )
+    }
+}
+
+ShowPage.defaultProps = {
+    page:{}
 }
 
 ShowPage.propTypes = {
-    title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired
+    page: PropTypes.object.isRequired,
 }
 
 export default ShowPage
